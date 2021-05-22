@@ -20,11 +20,15 @@ public class Wget implements Runnable{
 
             byte[] dataBuffer = new byte[speed];
             int bytesRead = 0;
+            long timeStart = System.currentTimeMillis();
             while ((bytesRead = in.read(dataBuffer, 0, speed)) != -1) {
                 out.write(dataBuffer, 0, bytesRead);
-                if (bytesRead == speed) {
-                    Thread.sleep(1000);
+                long timeEnd = System.currentTimeMillis();
+                long timeDiff = timeEnd - timeStart;
+                if (timeDiff < 1000) {
+                    Thread.sleep(1000 - timeDiff);
                 }
+                timeStart = timeEnd;
             }
         } catch (IOException | InterruptedException ex) {
             ex.printStackTrace();
@@ -32,6 +36,9 @@ public class Wget implements Runnable{
     }
 
     public static void main(String[] args) throws InterruptedException {
+        if (args.length != 2) {
+            throw new IllegalArgumentException("2 args expected: URL and speed(bytes per second)");
+        }
         String url = args[0];
         int speed = Integer.parseInt(args[1]);
         Thread wget = new Thread(new Wget(url, speed));
