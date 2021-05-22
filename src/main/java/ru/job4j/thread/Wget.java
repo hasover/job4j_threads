@@ -28,7 +28,7 @@ public class Wget implements Runnable{
                 if (timeDiff < 1000) {
                     Thread.sleep(1000 - timeDiff);
                 }
-                timeStart = timeEnd;
+                timeStart = System.currentTimeMillis();
             }
         } catch (IOException | InterruptedException ex) {
             ex.printStackTrace();
