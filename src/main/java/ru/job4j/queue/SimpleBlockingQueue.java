@@ -18,6 +18,10 @@ public class SimpleBlockingQueue<T> {
         SIZE = size;
     }
 
+    public SimpleBlockingQueue() {
+        SIZE = 1;
+    }
+
     public synchronized  void offer(T value) throws InterruptedException {
         while (queue.size() == SIZE) {
             wait();
