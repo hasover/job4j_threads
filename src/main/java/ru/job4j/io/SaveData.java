@@ -11,7 +11,8 @@ public class SaveData {
 
     public void saveContent(String content) {
 
-            try (PrintStream out = new PrintStream(new BufferedOutputStream(new FileOutputStream(file)))) {
+            try (PrintStream out = new PrintStream(
+                    new BufferedOutputStream(new FileOutputStream(file)))) {
                 out.print(content);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 
-public class Wget implements Runnable{
+public class Wget implements Runnable {
     private final String url;
     private final int speed;
 
@@ -13,6 +13,7 @@ public class Wget implements Runnable{
         this.url = url;
         this.speed = speed;
     }
+
     @Override
     public void run() {
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());

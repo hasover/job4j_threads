@@ -18,6 +18,7 @@ public class SingleLockList<T> implements Iterable<T> {
         this.list.addAll(list);
 
     }
+
     public SingleLockList() {
         list = new ArrayList<>();
     }
@@ -38,7 +39,7 @@ public class SingleLockList<T> implements Iterable<T> {
 
     private List<T> copy(List<T> source) {
        List<T> copiedList = new ArrayList<>();
-        for(T elem : source) {
+        for (T elem : source) {
             copiedList.add(elem);
         }
         return copiedList;

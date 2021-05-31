@@ -11,13 +11,12 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class SimpleBlockingQueueTest {
 
-
     @Test
     public void test1() throws InterruptedException {
         SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>(4);
 
         Thread producer = new Thread(() -> {
-            for (int i = 0; i < 10 ; i++) {
+            for (int i = 0; i < 10; i++) {
                 try {
                     queue.offer(i);
                 } catch (InterruptedException e) {
@@ -39,7 +38,6 @@ public class SimpleBlockingQueueTest {
 
         producer.start();
         consumer.start();
-
 
         Thread.sleep(1000);
         consumer.join();
@@ -117,6 +115,6 @@ public class SimpleBlockingQueueTest {
         producer.join();
         consumer.interrupt();
         consumer.join();
-        assertThat(buffer, is(Arrays.asList( "aaa", "aaaa", "aaaaa")));
+        assertThat(buffer, is(Arrays.asList("aaa", "aaaa", "aaaaa")));
     }
 }
