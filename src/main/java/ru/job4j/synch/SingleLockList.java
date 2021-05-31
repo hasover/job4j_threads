@@ -32,7 +32,15 @@ public class SingleLockList<T> implements Iterable<T> {
 
     @Override
     public synchronized Iterator<T> iterator() {
-        List<T> temp = new ArrayList<>(list);
-        return temp.iterator();
+
+        return copy(this.list).iterator();
+    }
+
+    private List<T> copy(List<T> source) {
+       List<T> copiedList = new ArrayList<>();
+        for(T elem : source) {
+            copiedList.add(elem);
+        }
+        return copiedList;
     }
 }
