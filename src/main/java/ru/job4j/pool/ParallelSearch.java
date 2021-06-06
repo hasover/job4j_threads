@@ -4,10 +4,10 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
 public class ParallelSearch<T extends Comparable<T>> extends RecursiveTask<Integer> {
-    final T[] array;
-    final T object;
-    final int start;
-    final int end;
+    private final T[] array;
+    private final T object;
+    private final int start;
+    private final int end;
 
     public ParallelSearch(T[] array, T object, int start, int end) {
         this.array = array;
